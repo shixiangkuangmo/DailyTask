@@ -14,4 +14,5 @@ G1NZ_2132_saltkey=xxxx;G1NZ_2132_auth=xxxxx;
 ```
 <br/>
 运行结果：
-![1](https://github.com/shixiangkuangmo/DailyTask/assets/31498452/2e2ab72a-c089-4b8f-8995-62cbc6d6ac5d)
+![jg](https://github.com/shixiangkuangmo/DailyTask/assets/31498452/f8ba56aa-9ef5-41e6-a41a-d76a204c04a6)
+
