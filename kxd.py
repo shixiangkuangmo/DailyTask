@@ -27,17 +27,17 @@ def load_send():
         print("加载通知服务失败~")
 
 #通知服务
-#load_send()
+load_send()
 send_msg = ''
 # 设置要发送的 GET 请求的 URL
 dturl = "https://www.kxdao.net/plugin.php?id=ahome_dayquestion:pop"
 
 #本地运行
-cookies = [
+# cookies = [
   
-]
+# ]
 #青龙运行
-#cookies = environ.get("kxd_ck").split("#")
+cookies = environ.get("kxd_ck").split("#")
 for item in cookies:
   headers = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
@@ -66,6 +66,10 @@ for item in cookies:
   #答题
   responsedt = requests.post(dturl, headers=headers, data=data,verify=False)
   soup = BeautifulSoup(responsedt.text, 'html.parser')
+  alertEl = soup.select("#messagetext p")[0]
+  if(alertEl.text.find("登录后") != -1):
+     send_msg += item + "登录状态失效，请重新获取cookie\n"
+     continue
   name = soup.find("a",attrs={'title': '访问我的空间'}).text
   send_msg += name + "\n"
   el = soup.select("#messagetext p")
@@ -85,5 +89,5 @@ for item in cookies:
   time.sleep(1.5)
   
 
-print(send_msg)
-#send('科学刀', send_msg)
+#print(send_msg)
+send('科学刀', send_msg)
